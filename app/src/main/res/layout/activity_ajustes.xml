@@ -17,7 +17,7 @@
             android:id="@+id/spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tamaño" />
+            android:text="@string/tama_o" />
         <Spinner
             android:id="@+id/spinner1"
             android:layout_width="match_parent"
