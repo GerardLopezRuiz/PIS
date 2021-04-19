@@ -13,26 +13,59 @@
         tools:layout_editor_absoluteX="200dp"
         tools:layout_editor_absoluteY="360dp">
 
-        <Spinner
-            android:id="@+id/spinner"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/tama_o" />
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
+
         <Spinner
             android:id="@+id/spinner1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Letra" />
+            android:layout_height="41dp"
+            android:text="Letra"
+            android:layout_gravity="center"/>
         <Spinner
             android:id="@+id/spinner2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Estilo" />
+            android:layout_height="41dp"
+            android:text="Estilo"
+            android:layout_gravity="center"/>
 
         <Spinner
-            android:id="@+id/spinner3"
+            android:id="@+id/spinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Idioma" />
+            android:layout_height="41dp"
+            android:layout_gravity="center"
+            android:text="Tamaño" />
+
+        <?xml version="1.0" encoding="utf-8"?>
+        <resources>
+            <string-array android:name="array_1">
+                <item>Pequeño</item>
+                <item>Mediano</item>
+                <item>Grande</item>
+            </string-array>
+        </resources>
+
+        <?xml version="1.0" encoding="utf-8"?>
+        <resources>
+            <string-array android:name="array_2">
+                <item>Times new Roman</item>
+                <item>Arial</item>
+            </string-array>
+        </resources>
+
+        <?xml version="1.0" encoding="utf-8"?>
+        <resources>
+            <string-array android:name="array_3">
+                <item>Day</item>
+                <item>Night</item>
+                <item>Grey</item>
+            </string-array>
+        </resources>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
