@@ -18,7 +18,7 @@ public class ajustes extends AppCompatActivity {
         Spinner spinner1 = (Spinner) findViewById(R.id.spinner1);
         Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
 // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.array_1, android.R.layout.simple_spinner_item);
+       /*ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.array_1, android.R.layout.simple_spinner_item);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,R.array.array_2, android.R.layout.simple_spinner_item);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,R.array.array_3, android.R.layout.simple_spinner_item);
 // Specify the layout to use when the list of choices appears
@@ -28,6 +28,6 @@ public class ajustes extends AppCompatActivity {
 // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
         spinner1.setAdapter(adapter);
-        spinner2.setAdapter(adapter);
+        spinner2.setAdapter(adapter); */
     }
 }
