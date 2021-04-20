@@ -41,31 +41,7 @@
             android:layout_gravity="center"
             android:text="Tamaño" />
 
-        <?xml version="1.0" encoding="utf-8"?>
-        <resources>
-            <string-array android:name="array_1">
-                <item>Pequeño</item>
-                <item>Mediano</item>
-                <item>Grande</item>
-            </string-array>
-        </resources>
 
-        <?xml version="1.0" encoding="utf-8"?>
-        <resources>
-            <string-array android:name="array_2">
-                <item>Times new Roman</item>
-                <item>Arial</item>
-            </string-array>
-        </resources>
-
-        <?xml version="1.0" encoding="utf-8"?>
-        <resources>
-            <string-array android:name="array_3">
-                <item>Day</item>
-                <item>Night</item>
-                <item>Grey</item>
-            </string-array>
-        </resources>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
