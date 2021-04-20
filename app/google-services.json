@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "509509875405",
+    "project_id": "pis-tudu-gerard",
+    "storage_bucket": "pis-tudu-gerard.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509509875405:android:b754c71895c87d47bf5b84",
+        "android_client_info": {
+          "package_name": "com.example.pis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509509875405-3httq2hfis4ceur4d0pnca543ccqa04n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXtAsmDvJLlYdfDzL4Zm8UujavhLjLTfg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509509875405-3httq2hfis4ceur4d0pnca543ccqa04n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

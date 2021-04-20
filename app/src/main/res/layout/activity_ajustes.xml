@@ -10,8 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="200dp"
-        tools:layout_editor_absoluteY="360dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar2"
@@ -25,14 +27,15 @@
             android:id="@+id/spinner1"
             android:layout_width="match_parent"
             android:layout_height="41dp"
-            android:text="Letra"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:text="Letra" />
+
         <Spinner
             android:id="@+id/spinner2"
             android:layout_width="match_parent"
             android:layout_height="41dp"
-            android:text="Estilo"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:text="Estilo" />
 
         <Spinner
             android:id="@+id/spinner"
