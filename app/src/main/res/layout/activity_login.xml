@@ -13,20 +13,23 @@
 
 
     <Button
-        android:id="@+id/btnLogin" android:layout_height="wrap_content"
-        android:layout_width="wrap_content" android:text="Log in"
-        android:layout_gravity="center_horizontal" android:paddingLeft="15dip" android:paddingRight="15dip" />
-
-    <TextView
-        android:id="@+id/link_to_register"
-        android:layout_width="fill_parent"
+        android:id="@+id/btnLogin"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dip"
-        android:layout_marginBottom="40dip"
-        android:text="Registrarse"
-        android:gravity="center"
-        android:textSize="20dip"
-        android:textColor="@color/black"/>
+        android:layout_width="wrap_content"
+        android:text="Log in"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="15dip"
+        android:paddingRight="15dip" />
+
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:paddingLeft="15dip"
+        android:paddingRight="15dip"
+        android:text="Registrarse" />
 
     <TextView
         android:id="@+id/login_error"
@@ -35,6 +38,7 @@
         android:layout_marginTop="40dip"
         android:layout_marginBottom="40dip"
         android:gravity="center"
-        android:textSize="20dip"
-        android:textColor="#0b84aa"/>
+        android:textColor="#0b84aa"
+        android:textSize="20dip" />
+
 </LinearLayout>
