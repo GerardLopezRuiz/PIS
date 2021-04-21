@@ -37,10 +37,10 @@ public class login extends AppCompatActivity {
         });
 
         Button btn1 = (Button) findViewById(R.id.btnLogin);
-        btn.setOnClickListener(new View.OnClickListener() {
+        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intentlogin = new Intent (v.getContext(), MainActivity.class);
+            public void onClick(View a) {
+                Intent intentlogin = new Intent (a.getContext(), MainActivity.class);
                 startActivityForResult(intentlogin, 0);
             }
         });

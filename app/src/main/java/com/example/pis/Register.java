@@ -25,13 +25,15 @@ public class Register extends Activity {
         });
 
         Button btn1 = (Button) findViewById(R.id.btnRegister);
-        btn.setOnClickListener(new View.OnClickListener() {
+        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent2 = new Intent (v.getContext(), login.class);
                 startActivityForResult(intent2, 0);
             }
         });
+
+
 
 
     }

@@ -9,18 +9,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Register"></activity>
-        <activity android:name=".login" />
-        <activity android:name=".ajustes" />
+        <activity android:name=".archivados"
+            android:parentActivityName="com.example.pis.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pis.MainActivity" />
+        </activity>
+        <activity android:name=".Ordenar"
+            android:parentActivityName="com.example.pis.MainActivity"/>
+        <activity android:name=".Register"
+            android:parentActivityName="com.example.pis.MainActivity"/>
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.PIS.NoActionBar">
+            android:name=".login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ajustes"
+            android:parentActivityName="com.example.pis.MainActivity"
+            android:configChanges="uiMode"/>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.PIS.NoActionBar">
         </activity>
     </application>
 
