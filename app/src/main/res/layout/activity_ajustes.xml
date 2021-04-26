@@ -31,12 +31,7 @@
             android:layout_gravity="center"
             android:text="Letra" />
 
-        <Spinner
-            android:id="@+id/spinner2"
-            android:layout_width="match_parent"
-            android:layout_height="41dp"
-            android:layout_gravity="center"
-            android:text="Estilo" />
+
 
         <Spinner
             android:id="@+id/spinner"
@@ -45,6 +40,11 @@
             android:layout_gravity="center"
             android:text="Tamaño" />
 
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Modo Nocturno" />
 
 
     </LinearLayout>
