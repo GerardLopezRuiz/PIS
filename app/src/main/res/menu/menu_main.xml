@@ -17,4 +17,9 @@
         android:orderInCategory="100"
         android:title="Archivados"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_Cerrarsesion"
+        android:orderInCategory="100"
+        android:title="Cerrar Sesión"
+        app:showAsAction="never" />
 </menu>
