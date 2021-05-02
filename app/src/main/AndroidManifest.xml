@@ -28,8 +28,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ajustes"
-            android:parentActivityName="com.example.pis.MainActivity"
-            android:configChanges="uiMode"/>
+            android:parentActivityName="com.example.pis.MainActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
