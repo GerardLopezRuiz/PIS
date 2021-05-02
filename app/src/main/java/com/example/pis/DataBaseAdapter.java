@@ -32,6 +32,7 @@ import java.util.concurrent.Executor;
 public class DataBaseAdapter {
     String TAG= "DataBaseAdapter";
     public static FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final FirebaseStorage storage = FirebaseStorage.getInstance();
     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseUser user;
 
@@ -101,6 +102,24 @@ public class DataBaseAdapter {
                 });
 
     }
+    public void deleteDocument(String id){
+        db.collection("nota")
+                .document(id)
+                .delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "Elemento actualizado");
+                    }
+
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error al actualizar el estado", e);
+                    }
+                });
+    }
 
     public void saveDocument (String id, String text, String title) {
         // Create a new user with a first and last name
@@ -108,7 +127,6 @@ public class DataBaseAdapter {
         note.put("id", id);
         note.put("description", text);
         note.put("title", title);
-
         Log.d(TAG, "saveDocument");
         // Add a new document with a generated ID
         db.collection("nota")

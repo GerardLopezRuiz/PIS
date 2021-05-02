@@ -27,6 +27,9 @@ public class MainActivityViewModel extends ViewModel implements DataBaseAdapter.
         mnota.setValue(mnota.getValue());
         nota.saveCard();
     }
+    public LiveData<String> getToast(){
+        return mToast;
+    }
 
     @Override
     public void setCollection(ArrayList<nota> ac) { mnota.setValue(ac);}

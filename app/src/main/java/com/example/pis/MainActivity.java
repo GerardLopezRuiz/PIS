@@ -1,5 +1,6 @@
 package com.example.pis;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -13,23 +14,40 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Context parentcontext;
+    private MainActivityViewModel viewModel;
+    private RecyclerView mRecyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        parentcontext = this.getBaseContext();
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycleview);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        setLiveDataObservers();
+
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +100,31 @@ public class MainActivity extends AppCompatActivity {
                 // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
         }
+    }
+    public void setLiveDataObservers() {
+        //Subscribe the activity to the observable
+        viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
+
+        final Observer<ArrayList<nota>> observer = new Observer<ArrayList<nota>>() {
+            @Override
+            public void onChanged(ArrayList<nota> ac) {
+                CustomAdapter newAdapter = new CustomAdapter(parentcontext, ac);
+                mRecyclerView.swapAdapter(newAdapter, false);
+                newAdapter.notifyDataSetChanged();
+
+            }
+        };
+
+        final Observer<String> observerToast = new Observer<String>() {
+            @Override
+            public void onChanged(String t) {
+                Toast.makeText(parentcontext, t, Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        viewModel.getNotaCards().observe(this, observer);
+        viewModel.getToast().observe(this, observerToast);;
+
     }
 
 
