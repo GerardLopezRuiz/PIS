@@ -24,21 +24,62 @@
             android:theme="?attr/actionBarTheme" />
 
 
-        <Spinner
-            android:id="@+id/spinner1"
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
-            android:layout_height="41dp"
-            android:layout_gravity="center"
-            android:text="Letra" />
+            android:layout_height="wrap_content"
+            android:text="FUENTES:"
+            android:gravity="center"
+            android:textSize="25dp"
+            />
 
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="122dp"
+            android:layout_height="34dp"
+            android:gravity="center"
+            android:text="ARIAL" />
 
+        <Button
+            android:id="@+id/button"
+            android:layout_width="121dp"
+            android:layout_height="36dp"
+            android:gravity="center"
+            android:text="New Times Roman" />
 
-        <Spinner
-            android:id="@+id/spinner"
+        <TextView
+            android:id="@+id/textView3"
             android:layout_width="match_parent"
-            android:layout_height="41dp"
-            android:layout_gravity="center"
-            android:text="Tamaño" />
+            android:layout_height="wrap_content"
+            android:text="TAMAÑO LETRA"
+            android:gravity="center"
+            android:textSize="25dp"/>
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="119dp"
+            android:layout_height="wrap_content"
+            android:text="Pequeña" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="118dp"
+            android:layout_height="wrap_content"
+            android:text="Mediana" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="118dp"
+            android:layout_height="wrap_content"
+            android:text="Grande" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OTROS AJUSTES"
+            android:gravity="center"
+            android:textSize="25dp"/>
 
         <Switch
             android:id="@+id/switch1"
