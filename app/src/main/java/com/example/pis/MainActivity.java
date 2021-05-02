@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -67,11 +70,11 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_archivados:
                 Intent intentarchivados = new Intent(this, archivados.class);
                 startActivityForResult(intentarchivados, 0);
-
                 return true;
 
             case R.id.action_Cerrarsesion:
-
+                FirebaseAuth.getInstance().signOut();
+                onBackPressed();
                 return true;
 
             default:

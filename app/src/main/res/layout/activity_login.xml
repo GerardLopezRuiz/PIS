@@ -3,7 +3,7 @@
     android:layout_width="fill_parent" android:layout_height="fill_parent"  android:padding="20dip">
 
     <EditText
-        android:id="@+id/txtEmail" android:layout_height="wrap_content"
+        android:id="@+id/emaileditText" android:layout_height="wrap_content"
         android:layout_width="fill_parent" android:hint="Email" android:inputType="textEmailAddress" />
 
     <EditText

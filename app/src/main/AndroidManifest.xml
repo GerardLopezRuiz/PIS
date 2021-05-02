@@ -31,9 +31,11 @@
             android:parentActivityName="com.example.pis.MainActivity" />
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
+            android:label="NOTAS"
             android:theme="@style/Theme.PIS.NoActionBar">
         </activity>
+        <activity android:name=".crearnota"
+            android:parentActivityName="com.example.pis.MainActivity"/>
     </application>
 
 </manifest>
