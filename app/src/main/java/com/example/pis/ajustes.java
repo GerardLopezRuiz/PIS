@@ -29,10 +29,27 @@ import android.widget.ArrayAdapter;
 public class ajustes extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+
+
+    public void setDayNight(){
+        SharedPreferences sp = getSharedPreferences("SP", this.MODE_PRIVATE);
+        int theme = sp.getInt("Theme",1);
+        if(theme==0){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
+        }
+        else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+        }
+
+    }
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajustes);
+        setDayNight();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -82,26 +99,32 @@ public class ajustes extends AppCompatActivity {
         });
 
 
-
-
+        SharedPreferences sp = getSharedPreferences("SP",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
         Switch switch1 = findViewById(R.id.switch1);
-        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        int theme = sp.getInt("Theme",1);
+        if(theme==1){
+            switch1.setChecked(false);
+        }
+        else{
+            switch1.setChecked(true);
+        }
+        switch1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            public void onClick(View v) {
+                if(switch1.isChecked()){
+                    editor.putInt("Theme",0);
+
                 }
                 else{
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    editor.putInt("Theme",1);
+
                 }
+                editor.commit();
+                setDayNight();
+
             }
         });
-
-
-
-
-
-
 
 
 

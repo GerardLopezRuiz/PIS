@@ -40,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
         parentcontext = this.getBaseContext();
 
 
+
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
