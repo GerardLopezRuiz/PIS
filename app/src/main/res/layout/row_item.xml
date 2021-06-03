@@ -5,7 +5,8 @@
     android:layout_margin="8dp"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:id="@+id/audio_layout">
+    android:id="@+id/audio_layout"
+    android:background="@drawable/bg_color">
 
     <TextView
         android:id="@+id/textView"
