@@ -27,6 +27,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,10 +39,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         parentcontext = this.getBaseContext();
-
-
-
-
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -58,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intentcrearnota = new Intent(view.getContext(), crearnota.class);
                 startActivityForResult(intentcrearnota, 0);
+                setLiveDataObservers();
             }
         });
 
@@ -79,8 +77,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_ajustes:
                 Intent intentajustes = new Intent(this, ajustes.class);
                 startActivityForResult(intentajustes, 0);
-
-
                 return true;
 
             case R.id.action_ordenar:
@@ -95,7 +91,8 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.action_Cerrarsesion:
                 FirebaseAuth.getInstance().signOut();
-                onBackPressed();
+                Intent intentlogin = new Intent(this, login.class);
+                startActivityForResult(intentlogin, 0);
                 return true;
 
             default:
@@ -110,8 +107,8 @@ public class MainActivity extends AppCompatActivity {
 
         final Observer<ArrayList<nota>> observer = new Observer<ArrayList<nota>>() {
             @Override
-            public void onChanged(ArrayList<nota> ac) {
-                CustomAdapter newAdapter = new CustomAdapter(parentcontext, ac);
+            public void onChanged(ArrayList<nota> nota) {
+                CustomAdapter newAdapter = new CustomAdapter(parentcontext, nota);
                 mRecyclerView.swapAdapter(newAdapter, false);
                 newAdapter.notifyDataSetChanged();
 

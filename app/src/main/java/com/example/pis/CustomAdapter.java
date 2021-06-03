@@ -13,10 +13,11 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CustomAdapter  extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
-    private final ArrayList<nota> localDataSet;
+    private final List<nota> localDataSet;
     private final Context parentContext;
 
 
@@ -50,7 +51,7 @@ public class CustomAdapter  extends RecyclerView.Adapter<CustomAdapter.ViewHolde
      * @param dataSet String[] containing the data to populate views to be used
      * by RecyclerView.
      */
-    public CustomAdapter(Context current, ArrayList<nota> dataSet) {
+    public CustomAdapter(Context current, List<nota> dataSet) {
         parentContext = current;
         localDataSet = dataSet;
 
@@ -74,8 +75,6 @@ public class CustomAdapter  extends RecyclerView.Adapter<CustomAdapter.ViewHolde
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        int color = ContextCompat.getColor(parentContext, R.color.black);
-        viewHolder.getLayout().setBackgroundColor(color);
         if(localDataSet.get(position).getTitle().length() > 0) {
             viewHolder.getTextView().setText(localDataSet.get(position).getTitle());
         }else{

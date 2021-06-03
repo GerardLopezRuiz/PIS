@@ -32,7 +32,7 @@ import java.util.concurrent.Executor;
 public class DataBaseAdapter {
     String TAG= "DataBaseAdapter";
     public static FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private final FirebaseStorage storage = FirebaseStorage.getInstance();
+    //private final FirebaseStorage storage = FirebaseStorage.getInstance();
     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseUser user;
 
@@ -81,7 +81,7 @@ public class DataBaseAdapter {
     }
     public void getCollection(){
         Log.d(TAG,"updateNotas");
-        DataBaseAdapter.db.collection("nota")
+        DataBaseAdapter.db.collection(user.getEmail())
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -103,7 +103,7 @@ public class DataBaseAdapter {
 
     }
     public void deleteDocument(String id){
-        db.collection("nota")
+        db.collection(user.getEmail())
                 .document(id)
                 .delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -129,12 +129,14 @@ public class DataBaseAdapter {
         note.put("title", title);
         Log.d(TAG, "saveDocument");
         // Add a new document with a generated ID
-        db.collection("nota")
-                .add(note)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        db.collection(user.getEmail())
+                .document(id)
+                .set(note)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                    public void onSuccess(Void aVoid) {
+
+                        Log.d(TAG, "Documento guardado:");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -147,7 +149,7 @@ public class DataBaseAdapter {
 
 
     public HashMap<String, String> getDocuments () {
-        db.collection("nota")
+        db.collection(user.getEmail())
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
