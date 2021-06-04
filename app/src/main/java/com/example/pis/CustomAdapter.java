@@ -19,7 +19,6 @@ public class CustomAdapter  extends RecyclerView.Adapter<CustomAdapter.ViewHolde
 
     private final List<nota> localDataSet;
     private final Context parentContext;
-
     final private  ListItemClick mOnClickListener;
 
 

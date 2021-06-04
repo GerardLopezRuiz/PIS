@@ -1,9 +1,11 @@
 package com.example.pis;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -54,9 +56,17 @@ public class Register extends Activity {
                                 startActivityForResult(intent2, 0);
 
                             } else {
-                                Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                Toast.makeText(getApplicationContext(), "Authentication failed.",
-                                        Toast.LENGTH_SHORT).show();
+                                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Register.this);
+                                final View customLayout = getLayoutInflater().inflate(R.layout.dialog_error, null);
+                                alertDialog.setView(customLayout);
+                                alertDialog.setPositiveButton("Aceptar",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                                                Toast.makeText(getApplicationContext(),"Authentication failed.",Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                alertDialog.show();
                             }
                         }
                     });

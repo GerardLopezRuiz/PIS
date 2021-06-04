@@ -36,7 +36,6 @@ public class DataBaseAdapter {
     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseUser user;
 
-
     public static vmInterface listener;
     public static DataBaseAdapter databaseAdapter;
 
@@ -74,10 +73,6 @@ public class DataBaseAdapter {
                         }
                     });
         }
-        else{
-            listener.setToast("Authentication with current user.");
-
-        }
     }
     public void getCollection(){
         Log.d(TAG,"updateNotas");
@@ -102,6 +97,7 @@ public class DataBaseAdapter {
                 });
 
     }
+
     public void deleteDocument(String id){
         db.collection(user.getEmail())
                 .document(id)

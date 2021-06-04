@@ -104,7 +104,7 @@ public class ajustes extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("SP",MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         Switch switch1 = findViewById(R.id.switch1);
-        int theme = sp.getInt("Theme",1);
+        int theme = sp.getInt("Theme",0);
         if(theme==1){
             switch1.setChecked(false);
         }

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
@@ -27,6 +28,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -38,17 +40,17 @@ public class MainActivity extends AppCompatActivity implements CustomAdapter.Lis
     private MainActivityViewModel viewModel;
     private RecyclerView mRecyclerView;
     public static boolean isUpdate;
+    private String password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         parentcontext = this;
+        password = getIntent().getStringExtra("password");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycleview);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         setLiveDataObservers();
 
@@ -77,13 +79,13 @@ public class MainActivity extends AppCompatActivity implements CustomAdapter.Lis
     }
 
     private void showAlertDialog(final nota note) {
-        switch (note.getPassword()) {
-            case 0:
+        switch (note.getPasswords()) {
+            case "False":
                 CharSequence[] options = {"Ver o Modificar", "Ocultar contenido", "Eliminar"};
                 defaultAlertDialog(note, options);
                 break;
-            case 1:
-                //passwordAlertDialog(note);
+            case "True":
+                passwordAlertDialog(note);
                 break;
         }
     }
@@ -96,33 +98,18 @@ public class MainActivity extends AppCompatActivity implements CustomAdapter.Lis
                 if (options[i].equals("Ver o Modificar")) {
                     isUpdate = true;
                     Intent intent = new Intent(MainActivity.this, crearnota.class);
-
                         intent.putExtra("title", note.getTitle());
-
-
                         intent.putExtra("text", note.getText());
-
-
                         intent.putExtra("password", note.getPasswords());
-
-
                         intent.putExtra("id", note.getId());
-
                     startActivity(intent);
                 } else if (options[i].equals("Ocultar contenido")) {
-                    note.setPassword(1);
                     note.setPasswords("True");
-                    viewModel.addNotaCard(note);
-                    setLiveDataObservers();
+                    note.saveCard();
                 } else if (options[i].equals("Mostrar contenido")) {
-                    note.setPassword(0);
                     note.setPasswords("False");
-                    viewModel.addNotaCard(note);
+                    note.saveCard();
                 } else if (options[i].equals("Eliminar")) {
-                    /*if (componentNotes.deleteNote(note.getNoteId()) != 0) {
-                        fillListView();
-                        Toasty.normal(getApplicationContext(), "Nota eliminada", Toast.LENGTH_SHORT).show();
-                    }*/
                     note.deleteCard();
                     setLiveDataObservers();
                 }
@@ -130,6 +117,35 @@ public class MainActivity extends AppCompatActivity implements CustomAdapter.Lis
         });
         alertDialogBuilder.show();
     }
+
+    private void passwordAlertDialog(final nota note) {
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
+        final View customLayout = getLayoutInflater().inflate(R.layout.dialog_password, null);
+        alertDialog.setView(customLayout);
+
+        alertDialog.setPositiveButton("Aceptar",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        EditText editTextPassword = customLayout.findViewById(R.id.editTextPassword);
+                         if (login.user.contraseña.equals(editTextPassword.getText().toString())) {
+                            CharSequence[] options = {"Ver o Modificar", "Mostrar contenido", "Eliminar"};
+                            defaultAlertDialog(note, options);
+                        }
+                    }
+                });
+
+        alertDialog.setNegativeButton("Cancelar",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+        alertDialog.show();
+    }
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -170,9 +186,10 @@ public class MainActivity extends AppCompatActivity implements CustomAdapter.Lis
             @Override
             public void onChanged(ArrayList<nota> nota) {
                 CustomAdapter newAdapter = new CustomAdapter(parentcontext, nota, (CustomAdapter.ListItemClick) parentcontext);
-                mRecyclerView.swapAdapter(newAdapter, false);
+                mRecyclerView = (RecyclerView) findViewById(R.id.recycleview);
+                mRecyclerView.setLayoutManager(new LinearLayoutManager(parentcontext));
+                mRecyclerView.setAdapter(newAdapter);
                 newAdapter.notifyDataSetChanged();
-
             }
         };
 
@@ -184,7 +201,7 @@ public class MainActivity extends AppCompatActivity implements CustomAdapter.Lis
         };
 
         viewModel.getNotaCards().observe(this, observer);
-        viewModel.getToast().observe(this, observerToast);;
+        viewModel.getToast().observe(this, observerToast);
 
     }
 
