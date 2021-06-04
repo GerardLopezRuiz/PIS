@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,6 +33,25 @@ public class crearnota extends AppCompatActivity {
         editTextTitle = (EditText) findViewById(R.id.Texttitulo);
         editTextDescription = (EditText) findViewById(R.id.Texttexto);
         finalizar = (Button) findViewById(R.id.btnFinalizar);
+
+
+        if(ajustes.peque){
+            editTextTitle.setTextSize(15);
+            editTextDescription.setTextSize(15);
+        }
+        else if(ajustes.mid){
+            editTextTitle.setTextSize(28);
+            editTextDescription.setTextSize(28);
+
+        }
+        else if(ajustes.grande){
+            editTextTitle.setTextSize(40);
+            editTextDescription.setTextSize(40);
+
+        }
+
+
+
 
         if(MainActivity.isUpdate) {
             catchnota();
@@ -97,4 +117,5 @@ public class crearnota extends AppCompatActivity {
             id = getIntent().getStringExtra("id");
 
     }
+
 }

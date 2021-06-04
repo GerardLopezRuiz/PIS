@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.app.Activity;
 import android.os.Bundle;
@@ -44,6 +45,12 @@ public class ajustes extends AppCompatActivity {
         }
 
     }
+    public static boolean peque=false;
+    public static boolean mid= false;
+    public static boolean grande = false;
+
+
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,28 +63,18 @@ public class ajustes extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
 
-        Button btnArial = (Button) findViewById(R.id.button);
-
-        btnArial.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View a) {
 
 
-            }
-        });
 
-        Button btnNewTimesRoman = (Button) findViewById(R.id.button4);
-        btnNewTimesRoman.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View a) {
-
-            }
-        });
 
         Button btnpequeña = (Button) findViewById(R.id.button5);
         btnpequeña.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View a) {
+                peque = true;
+                mid = false;
+                grande =false;
+
 
             }
         });
@@ -86,6 +83,9 @@ public class ajustes extends AppCompatActivity {
         btnmediana.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View a) {
+                peque = false;
+                mid =true;
+                grande =false;
 
             }
         });
@@ -94,7 +94,9 @@ public class ajustes extends AppCompatActivity {
         btngrande.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View a) {
-
+                peque = false;
+                mid =false;
+                grande =true;
             }
         });
 
