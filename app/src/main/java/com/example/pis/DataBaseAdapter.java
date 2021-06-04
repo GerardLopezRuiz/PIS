@@ -91,7 +91,7 @@ public class DataBaseAdapter {
                             ArrayList<nota> retrieved_ac = new ArrayList<nota>() ;
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
-                                retrieved_ac.add(new nota( document.getString("title"), document.getString("text")));
+                                retrieved_ac.add(new nota( document.getString("title"), document.getString("description"), document.getString("password"), document.getString("id")));
                             }
                             listener.setCollection(retrieved_ac);
 
@@ -121,12 +121,13 @@ public class DataBaseAdapter {
                 });
     }
 
-    public void saveDocument (String id, String text, String title) {
+    public void saveDocument (String id, String text, String title, String password) {
         // Create a new user with a first and last name
         Map<String, Object> note = new HashMap<>();
         note.put("id", id);
         note.put("description", text);
         note.put("title", title);
+        note.put("password", password);
         Log.d(TAG, "saveDocument");
         // Add a new document with a generated ID
         db.collection(user.getEmail())

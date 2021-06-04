@@ -20,28 +20,38 @@ public class CustomAdapter  extends RecyclerView.Adapter<CustomAdapter.ViewHolde
     private final List<nota> localDataSet;
     private final Context parentContext;
 
+    final private  ListItemClick mOnClickListener;
+
 
     /**
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).
      */
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public interface ListItemClick{
+        void onListItemClick(int clickedItem);
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final TextView textView;
-        private final LinearLayout audioLayout;
+        public nota nota;
+
 
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
             textView = view.findViewById(R.id.textView);
-            audioLayout = view.findViewById(R.id.audio_layout);
+            itemView.setOnClickListener(this);
         }
 
         public TextView getTextView() {
             return textView;
         }
 
-        public LinearLayout getLayout() {
-            return audioLayout;
+
+        @Override
+        public void onClick(View v) {
+            int clickedItem = getAdapterPosition();
+            mOnClickListener.onListItemClick(clickedItem);
         }
     }
 
@@ -49,11 +59,12 @@ public class CustomAdapter  extends RecyclerView.Adapter<CustomAdapter.ViewHolde
      * Initialize the dataset of the Adapter.
      *
      * @param dataSet String[] containing the data to populate views to be used
-     * by RecyclerView.
+     *                by RecyclerView.
      */
-    public CustomAdapter(Context current, List<nota> dataSet) {
+    public CustomAdapter(Context current, List<nota> dataSet, ListItemClick list) {
         parentContext = current;
         localDataSet = dataSet;
+        mOnClickListener = list;
 
     }
 
@@ -75,9 +86,9 @@ public class CustomAdapter  extends RecyclerView.Adapter<CustomAdapter.ViewHolde
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        if(localDataSet.get(position).getTitle().length() > 0) {
+        if (localDataSet.get(position).getTitle().length() > 0) {
             viewHolder.getTextView().setText(localDataSet.get(position).getTitle());
-        }else{
+        } else {
             viewHolder.getTextView().setText(localDataSet.get(position).getText());
         }
     }
@@ -90,4 +101,9 @@ public class CustomAdapter  extends RecyclerView.Adapter<CustomAdapter.ViewHolde
         }
         return 0;
     }
+
+
 }
+
+
+
