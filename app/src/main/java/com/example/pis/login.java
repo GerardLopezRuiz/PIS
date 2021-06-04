@@ -29,6 +29,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class login extends AppCompatActivity {
     String TAG = "Login";
     FirebaseAuth mAuth;
+    usuario usuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

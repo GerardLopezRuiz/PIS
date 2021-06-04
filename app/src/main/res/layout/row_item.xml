@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/audio_layout"
     android:layout_width="match_parent"
     android:layout_height="40dp"
     android:layout_margin="8dp"
+    android:background="@drawable/bg_color"
     android:gravity="center_vertical"
-    android:orientation="horizontal"
-    android:id="@+id/audio_layout"
-    android:background="@drawable/bg_color">
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:text="Item text" />
+
 </LinearLayout>
