@@ -9,14 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-        <activity android:name=".archivados"
-            android:parentActivityName="com.example.pis.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.pis.MainActivity" />
-        </activity>
-        <activity android:name=".Ordenar"
-            android:parentActivityName="com.example.pis.MainActivity"/>
         <activity android:name=".Register"
             android:parentActivityName="com.example.pis.MainActivity"/>
         <activity

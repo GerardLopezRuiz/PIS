@@ -7,16 +7,7 @@
         android:orderInCategory="100"
         android:title="Ajustes"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/action_ordenar"
-        android:orderInCategory="100"
-        android:title="Ordenar"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/action_archivados"
-        android:orderInCategory="100"
-        android:title="Archivados"
-        app:showAsAction="never" />
+
     <item
         android:id="@+id/action_Cerrarsesion"
         android:orderInCategory="100"

@@ -79,15 +79,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intentajustes, 0);
                 return true;
 
-            case R.id.action_ordenar:
-                Intent intentordenar = new Intent(this, Ordenar.class);
-                startActivityForResult(intentordenar, 0);
-
-                return true;
-            case R.id.action_archivados:
-                Intent intentarchivados = new Intent(this, archivados.class);
-                startActivityForResult(intentarchivados, 0);
-                return true;
 
             case R.id.action_Cerrarsesion:
                 FirebaseAuth.getInstance().signOut();
